@@ -39,24 +39,24 @@ class TestDjangoDbLock(TestCase):
     def test05(self):
         browser = Client()
         response = browser.post(self.url_acquire_lock, {"lock_name": "lock01", "worker_name": "worker01", "timeout": 300})
-        data = json.loads(response.content)
+        data = json.loads(response.content.decode("utf-8"))
         assert data["result"]
 
         response = browser.post(self.url_acquire_lock, {"lock_name": "lock01", "worker_name": "worker01", "timeout": 300})
-        data = json.loads(response.content)
+        data = json.loads(response.content.decode("utf-8"))
         assert data["result"] is False
 
         response = browser.get(self.url_get_lock_info, {"lock_name": "lock01"})
-        data = json.loads(response.content)
+        data = json.loads(response.content.decode("utf-8"))
         assert data["result"]
         assert data["result"]["lock_name"] == "lock01"
 
         response = browser.post(self.url_release_lock, {"lock_name": "lock01", "worker_name": "worker01"})
-        data = json.loads(response.content)
+        data = json.loads(response.content.decode("utf-8"))
         assert data["result"]
 
     def test06(self):
         browser = Client()
         response = browser.get(self.url_clear_expired_locks)
-        data = json.loads(response.content)
+        data = json.loads(response.content.decode("utf-8"))
         assert data["result"]
