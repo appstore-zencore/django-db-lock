@@ -69,4 +69,4 @@ Use outout project
 Install LockAdmin in admin site
 -------------------------------
 
-Add ~REGISTER_DJANGO_DB_LOCK_ADMIN = True~ in settings.py will register LockAdmin in django's default admin site.
+Add ** REGISTER_DJANGO_DB_LOCK_ADMIN = True ** in settings.py will register LockAdmin in django's default admin site.
