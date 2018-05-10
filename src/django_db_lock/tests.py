@@ -27,8 +27,9 @@ class TestDjangoDbLock(TestCase):
         assert do_acquire_lock("lock01", "worker01", 1)
 
     def test03(self):
-        assert do_release_lock("lock01", "worker01") == False
-        assert do_release_lock("lock01", "worker01") == False
+        assert do_acquire_lock("lock01", "worker01", 100)
+        assert do_release_lock("lock01", "worker01")
+        assert do_release_lock("lock01", "worker01")
 
     def test04(self):
         do_acquire_lock("lock01", "worker01", 100)

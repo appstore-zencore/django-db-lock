@@ -34,7 +34,9 @@ def release_lock(lock_name, worker_name):
             lock.delete()
         return True
     except Lock.DoesNotExist:
-        return False
+        return True
+    return False
+
 
 def get_lock_info(lock_name):
     try:

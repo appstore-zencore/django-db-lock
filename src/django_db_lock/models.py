@@ -3,10 +3,10 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Lock(models.Model):
-    lock_name = models.CharField(max_length=32, unique=True)
-    worker_name = models.CharField(max_length=32)
-    lock_time = models.DateTimeField(auto_now_add=True)
-    expire_time = models.DateTimeField()
+    lock_name = models.CharField(max_length=32, unique=True, verbose_name=_("Lock Name"))
+    worker_name = models.CharField(max_length=32, verbose_name=_("Worker Name"))
+    lock_time = models.DateTimeField(verbose_name=_("Lock Time"))
+    expire_time = models.DateTimeField(verbose_name=_("Expired Time"))
 
     class Meta:
         verbose_name = _("Lock")
