@@ -14,7 +14,7 @@ requires = [
 
 setup(
     name="django-db-lock",
-    version="0.1.0",
+    version="0.1.1",
     description="Lock something and keep status in database.",
     long_description=long_description,
     url="https://github.com/appstore-zencore/django-db-lock",
