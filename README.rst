@@ -66,7 +66,13 @@ Use outout project
                 request.post("http://api.server/system/dblock/acquire-lock", data=data)
         ...
 
-Install LockAdmin in admin site
--------------------------------
+Application options' in settings.py
+-----------------------------------
 
-Add ** REGISTER_DJANGO_DB_LOCK_ADMIN = True ** in settings.py will register LockAdmin in django's default admin site.
+- REGISTER_DJANGO_DB_LOCK_ADMIN
+
+    Register LockAdmin in django's default admin site. Default to False.
+
+- ENABLE_DJANGO_DB_LOCK_CSRF_PROTECT
+
+    Enable csrf-protect for django-db-lock's views. Default to False.

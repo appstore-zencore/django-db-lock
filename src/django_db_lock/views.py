@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .settings import ENABLE_DJANGO_DB_LOCK_CSRF_PROTECT
 from .services import acquire_lock as do_acquire_lock
 from .services import release_lock as do_release_lock
 from .services import get_lock_info as do_get_lock_info
@@ -35,3 +37,10 @@ def clear_expired_locks(request):
     return JsonResponse({
         "result": True
     })
+
+
+if not ENABLE_DJANGO_DB_LOCK_CSRF_PROTECT:
+    acquire_lock = csrf_exempt(acquire_lock)
+    release_lock = csrf_exempt(release_lock)
+    get_lock_info = csrf_exempt(get_lock_info)
+    clear_expired_locks = csrf_exempt(clear_expired_locks)
